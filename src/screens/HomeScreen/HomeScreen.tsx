@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useLayoutEffect } from 'react';
 import { StyleSheet } from 'react-native';
-import Typography from '../../components/atoms/Typography';
+import Map from '../../components/molecules/Map';
 import Page from '../../components/molecules/Page';
 
 export const HomeScreen: React.FC = () => {
@@ -15,7 +15,7 @@ export const HomeScreen: React.FC = () => {
 
     return (
         <Page style={styles.container}>
-            <Typography>HomePage</Typography>
+            <Map />
         </Page>
     );
 };
@@ -23,5 +23,6 @@ export const HomeScreen: React.FC = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        position: 'relative'
     },
 })
