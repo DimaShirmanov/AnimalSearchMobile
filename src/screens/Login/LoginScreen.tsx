@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, KeyboardAvoidingView, ScrollView } from 'react-native';
-import Typography from '../../components/atoms/Typography';
+import { StyleSheet, KeyboardAvoidingView, ScrollView, View } from 'react-native';
+import Button from '../../components/molecules/Button';
 import Input from '../../components/molecules/Input';
 import Page from '../../components/molecules/Page';
 import { IS_IOS } from '../../utils/screenSize';
 
 export const LoginScreen: React.FC = () => {
     const [phone, setPhone] = useState('');
+
+    const handleLoginPress = () => { };
 
     return (
         <Page style={styles.container}>
@@ -19,7 +21,13 @@ export const LoginScreen: React.FC = () => {
                     contentContainerStyle={styles.containerScroll}
                     scrollEnabled={false}
                 >
-                    <Input onChangeText={setPhone} value={phone} title="Номер телефона" />
+                    <Input
+                        keyboardType="number-pad"
+                        onChangeText={setPhone}
+                        value={phone}
+                        title="Номер телефона"
+                    />
+                    <Button disabled={phone.length < 7}>Авторизоваться</Button>
                 </ScrollView>
             </KeyboardAvoidingView>
         </Page>
