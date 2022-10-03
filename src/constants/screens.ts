@@ -5,5 +5,9 @@ export const screens: IScreens = {
     Login: 'Login',
     HomeRoot: 'HomeRoot',
     Home: 'Home',
-    MainScreens: 'MainScreens'
+    MainScreens: 'MainScreens',
+    ChatRoot: 'ChatRoot',
+    ChatList: 'ChatList',
+    ProfileRoot: 'ProfileRoot',
+    Profile: 'Profile'
 };

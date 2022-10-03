@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorValue, Text, TextStyle } from 'react-native';
+import { ColorValue, Text, TextProps, TextStyle } from 'react-native';
 
 interface IProps {
     children: React.ReactNode;
@@ -76,11 +76,12 @@ const VARIANTS: Dictionary = {
     },
 };
 
-const Typography: React.FC<IProps> = ({
+const Typography: React.FC<IProps & TextProps> = ({
     color = '#000',
     variant = 'body1',
     center,
     children,
+    ...rest
 }) => {
     const style: TextStyle = {
         ...VARIANTS[variant],
@@ -88,7 +89,7 @@ const Typography: React.FC<IProps> = ({
         color,
     };
     return (
-        <Text style={style}>{children}</Text>
+        <Text {...rest} style={style}>{children}</Text>
     );
 };
 
