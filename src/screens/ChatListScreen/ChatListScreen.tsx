@@ -15,14 +15,17 @@ const ChatListScreenImpl: React.FC = () => {
     const isFetching = useAppSelector(state => state.chat.isFetching);
     const [isRefreshing, setIsRefreshing] = useState(false);
 
-    useEffect(() => {
+    const handleFetchChats = () => {
         dispatch(chatFetching());
         dispatch(fetchChats());
+    }
+
+    useEffect(() => {
+        handleFetchChats();
     }, []);
 
     useEffect(() => {
         if (!isFetching) {
-            
             setIsRefreshing(false);
         }
     }, [isFetching]);
@@ -35,8 +38,7 @@ const ChatListScreenImpl: React.FC = () => {
 
     const handleRefresh = () => {
         setIsRefreshing(true);
-        dispatch(chatFetching());
-        dispatch(fetchChats());
+        handleFetchChats();
     }
 
     return (
