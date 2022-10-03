@@ -3,12 +3,17 @@ import { StyleSheet, KeyboardAvoidingView, ScrollView, View } from 'react-native
 import Button from '../../components/molecules/Button';
 import Input from '../../components/molecules/Input';
 import Page from '../../components/molecules/Page';
+import { useAppDispatch } from '../../hooks/storeHooks';
+import { signIn } from '../../store/auth/authSlice';
 import { IS_IOS } from '../../utils/screenSize';
 
 export const LoginScreen: React.FC = () => {
     const [phone, setPhone] = useState('');
+    const dispatch = useAppDispatch();
 
-    const handleLoginPress = () => { };
+    const handleLoginPress = () => {
+        dispatch(signIn());
+    };
 
     return (
         <Page style={styles.container}>
@@ -27,7 +32,7 @@ export const LoginScreen: React.FC = () => {
                         value={phone}
                         title="Номер телефона"
                     />
-                    <Button disabled={phone.length < 7}>Авторизоваться</Button>
+                    <Button onPress={handleLoginPress} disabled={phone.length < 7}>Авторизоваться</Button>
                 </ScrollView>
             </KeyboardAvoidingView>
         </Page>

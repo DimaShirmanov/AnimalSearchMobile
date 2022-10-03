@@ -8,10 +8,10 @@ interface IProps {
     children: React.ReactNode;
 }
 
-const Button: React.FC<IProps & TouchableOpacityProps> = ({ disabled, children }) => {
+const Button: React.FC<IProps & TouchableOpacityProps> = ({ disabled, children, ...rest }) => {
     const { color } = useAssets();
     return (
-        <TouchableOpacity disabled={disabled} style={[styles.container, { backgroundColor: color.kit_mainColor }]}>
+        <TouchableOpacity disabled={disabled} style={[styles.container, { backgroundColor: color.kit_mainColor }]} {...rest}>
             <Typography color={color.kit_white}>{children}</Typography>
         </TouchableOpacity>
     );
